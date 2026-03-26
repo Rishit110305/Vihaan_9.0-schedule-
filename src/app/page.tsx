@@ -3,13 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-// Refined Bat Shape closer to classic Batman logo
-const BatShape = ({ className, width, height, ...props }: any) => (
-  <svg viewBox="0 0 240 80" className={className} style={{ width, height }} fill="currentColor" {...props}>
-    {/* A more Batman-like shape with distinct ears, flatter top curve, and wider wingspan */}
-    <path d="M0,40 Q30,40 60,30 Q70,25 75,20 L80,30 Q90,15 95,5 L105,15 L115,15 L125,5 Q130,15 140,30 L145,20 Q150,25 160,30 Q190,40 220,40 Q240,40 240,40 Q210,48 180,55 Q160,60 145,55 L135,65 Q125,75 115,80 Q105,75 95,65 L85,55 Q70,60 50,55 Q20,48 0,40 Z" />
-  </svg>
-);
+
 
 
 
@@ -38,7 +32,7 @@ export default function SchedulePage() {
       {/* Top Left Spider Logo - Fixed at viewport edge */}
       <div 
         className="fixed top-0 left-0 z-50 pointer-events-none"
-        style={{ width: '90px', height: '90px', mixBlendMode: 'screen', opacity: 0.35 }}
+        style={{ width: '150px', height: '150px', mixBlendMode: 'screen', opacity: 0.6 }}
       >
         <img 
           src="/spider2.png" 
@@ -135,18 +129,23 @@ export default function SchedulePage() {
                         fill="none"
                         vectorEffect="non-scaling-stroke"
                       />
-                      {/* Place a spider somewhere along the line */}
+                       {/* Place a spider somewhere along the line */}
                        <motion.g 
-                        initial={{ opacity: 0 }} 
-                        animate={{ opacity: 1 }} 
-                        transition={{ delay: i * 0.3 + 1.2 }}
-                        style={{ transform: `translate(${midX}%, ${midY}%)`, transformOrigin: 'center' }}
-                      >
-                         <svg x="-1" y="-1" width="2" height="2">
-                           <circle cx="1" cy="1" r="0.9" fill="white" opacity="0.7" />
-                         </svg>
-                      </motion.g>
-                    </g>
+                         initial={{ opacity: 0 }} 
+                         animate={{ opacity: 1 }} 
+                         transition={{ delay: i * 0.3 + 1.2 }}
+                         style={{ transform: `translate(${midX}%, ${midY}%)`, transformOrigin: 'center' }}
+                       >
+                         <image
+                           href="/spider2.png"
+                           x="-1.5"
+                           y="-1.5"
+                           width="3"
+                           height="3"
+                           style={{ filter: 'brightness(2) contrast(1.2)', opacity: 0.6, mixBlendMode: 'screen' }}
+                         />
+                       </motion.g>
+                     </g>
                   );
               })}
             </svg>
@@ -168,10 +167,18 @@ export default function SchedulePage() {
               </h2>
             )}
             
-            <div className="relative w-full aspect-[4/1] flex items-center justify-center">
-              <BatShape className="absolute inset-0 w-full h-full text-zinc-600 drop-shadow-[0_0_8px_rgba(30,100,255,0.3)] group-hover:scale-105 group-hover:drop-shadow-[0_0_15px_rgba(0,100,255,0.6)] transition-all duration-300 stroke-[#111] stroke-[2px]" />
-              <BatShape className="absolute inset-0 w-[96%] h-[80%] left-[2%] top-[10%] text-zinc-900 opacity-30" />
-              <span className="relative z-10 text-white text-xs lg:text-[13px] font-kalam tracking-wider uppercase drop-shadow-md">
+            <div className="relative w-full aspect-[2.5/1] flex items-center justify-center">
+              <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+                <img
+                  src="/bat-logo.png"
+                  alt="Bat Node"
+                  className="w-full h-full object-contain filter transition-all duration-300 group-hover:scale-105"
+                  style={{
+                    filter: 'invert(0.4) brightness(0.6) drop-shadow(0 3px 0px #0050ff) drop-shadow(0 0 10px rgba(0, 80, 255, 0.4))',
+                  }}
+                />
+              </div>
+              <span className="relative z-10 text-white text-[10px] lg:text-[12px] font-kalam tracking-wider uppercase drop-shadow-[0_1px_2px_rgba(0,0,0,1)] font-bold px-4 text-center leading-tight">
                 {node.text}
               </span>
             </div>
