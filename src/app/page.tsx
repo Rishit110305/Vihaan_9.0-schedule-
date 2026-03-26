@@ -158,7 +158,7 @@ export default function SchedulePage() {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: i * 0.3 + 0.5, type: 'spring' }}
-            className="absolute z-20 flex flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2 w-56 lg:w-72 group cursor-pointer"
+            className="absolute z-20 flex flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2 w-64 lg:w-80 group cursor-pointer"
             style={{ left: `${node.x}%`, top: `${node.y}%` }}
           >
             {node.position === 'top' && (
@@ -194,8 +194,14 @@ export default function SchedulePage() {
       
       {/* Footer Cityscape */}
       <div className="absolute bottom-0 left-0 w-full flex items-end z-0 pointer-events-none">
-        <img src="/skyline1.png" alt="Skyline Left" className="w-1/2 h-auto block opacity-90 contrast-50 brightness-[2]" />
-        <img src="/skyline2.png" alt="Skyline Right" className="w-1/2 h-auto block opacity-90 contrast-50 brightness-[2]" />
+        <img 
+          src="/skyline1.png" alt="Skyline Left" 
+          className="w-1/2 h-[28vh] block object-cover object-bottom opacity-90 contrast-50 brightness-[2]" 
+        />
+        <img 
+          src="/skyline2.png" alt="Skyline Right" 
+          className="w-1/2 h-[28vh] block object-cover object-bottom opacity-90 contrast-50 brightness-[2]" 
+        />
       </div>
     </div>
   );
