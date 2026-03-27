@@ -31,13 +31,13 @@ export default function SchedulePage() {
       
       {/* Top Left Spider Logo - Fixed at viewport edge */}
       <div 
-        className="fixed top-0 left-0 z-50 pointer-events-none"
-        style={{ width: '150px', height: '150px', mixBlendMode: 'screen', opacity: 0.6 }}
+        className="fixed top-0 left-4 z-50 pointer-events-none"
+        style={{ width: '120px', height: '240px', mixBlendMode: 'screen', opacity: 0.5 }}
       >
         <img 
-          src="/spider2.png" 
+          src="/spider-new.png" 
           alt="Spider Logo" 
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain object-top pt-4"
         />
       </div>
 
@@ -67,45 +67,6 @@ export default function SchedulePage() {
           </motion.h1>
         </div>
 
-        {/* Connecting Lines and Spiders */}
-        <div className="absolute inset-0 w-full h-full z-10 pointer-events-none">
-          <svg className="w-full h-full" preserveAspectRatio="none">
-            {nodes.map((node, i) => {
-              if (i === nodes.length - 1) return null;
-              const next = nodes[i + 1];
-              const isDownward = next.y > node.y;
-              // Web sagging curve dynamically calculated
-              const cpX = (node.x + next.x) / 2;
-              const cpY = isDownward ? next.y - 10 : node.y - 10;
-              
-              const startX = `${node.x}%`;
-              const startY = `${node.y}%`;
-              const nextX = `${next.x}%`;
-              const nextY = `${next.y}%`;
-              const cX = `${cpX}%`;
-              const cY = `${cpY}%`;
-
-              return (
-                <g key={`connection-${i}`}>
-                  {/* The sagging web line */}
-                  <motion.path
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{ pathLength: 1, opacity: 0.4 }}
-                    transition={{ duration: 1, delay: i * 0.3 + 0.5 }}
-                    d={`M ${node.x} ${node.y} Q ${cpX} ${cpY} ${next.x} ${next.y}`}
-                    // This maps percentages perfectly using vector-effect
-                    stroke="white"
-                    strokeWidth="1"
-                    strokeDasharray="3 3"
-                    fill="none"
-                    // Vector math workaround since browsers don't natively let you do `d="M % %"` inside SVG
-                    // I will transform the SVG coordinate space to be 100x100!
-                  />
-                </g>
-              );
-            })}
-          </svg>
-        </div>
 
         {/* To properly use % coordinates in SVG path, we use viewBox 0 0 100 100 */}
         <div className="absolute inset-0 w-full h-full z-10 pointer-events-none">
@@ -158,33 +119,67 @@ export default function SchedulePage() {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: i * 0.3 + 0.5, type: 'spring' }}
-            className="absolute z-20 flex flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2 w-64 lg:w-80 group cursor-pointer"
+            className="absolute z-20 flex flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2 w-64 lg:w-[320px] group cursor-pointer"
             style={{ left: `${node.x}%`, top: `${node.y}%` }}
           >
             {node.position === 'top' && (
-              <h2 className="text-white text-3xl font-kalam mb-1 group-hover:-translate-y-1 transition-transform tracking-wide" style={{ textShadow: '2px 2px 0px rgba(0,0,0,0.8)' }}>
+              <h2
+                className="text-white font-bangers tracking-widest mb-1 group-hover:-translate-y-1 transition-transform"
+                style={{
+                  fontSize: '3rem',
+                  fontStyle: 'italic',
+                  fontWeight: 900,
+                  textShadow: '2px 2px 0 #000, -1px -1px 0 #000',
+                  letterSpacing: '0.08em',
+                }}
+              >
                 {node.date}
               </h2>
             )}
-            
-            <div className="relative w-full aspect-[2.5/1] flex items-center justify-center">
-              <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+
+            {/* Batman logo node */}
+            <div className="relative w-full flex items-center justify-center" style={{ aspectRatio: '1.35 / 1' }}>
+              {/* Grey bat with blue wing-edge glow */}
+              <div className="absolute inset-0 w-full h-full">
                 <img
                   src="/bat-logo.png"
                   alt="Bat Node"
-                  className="w-full h-full object-contain filter transition-all duration-300 group-hover:scale-105"
+                  className="w-full h-full object-contain transition-all duration-300 group-hover:scale-105"
                   style={{
-                    filter: 'invert(0.4) brightness(0.6) drop-shadow(0 3px 0px #0050ff) drop-shadow(0 0 10px rgba(0, 80, 255, 0.4))',
+                    filter:
+                      'invert(0.38) brightness(0.75) contrast(1.1)'
+                      + ' drop-shadow(0 4px 0px #2255ff)'
+                      + ' drop-shadow(0 -1px 0px #2255ff)'
+                      + ' drop-shadow(0 0 14px rgba(30,90,255,0.45))',
                   }}
                 />
               </div>
-              <span className="relative z-10 text-white text-[10px] lg:text-[12px] font-kalam tracking-wider uppercase drop-shadow-[0_1px_2px_rgba(0,0,0,1)] font-bold px-4 text-center leading-tight">
+              {/* Event label inside bat */}
+              <span
+                className="relative z-10 text-white font-kalam uppercase text-center px-4 md:px-6"
+                style={{
+                  fontSize: '0.85rem',
+                  fontStyle: 'italic',
+                  textShadow: '1px 1px 3px #000, 0 0 8px #000',
+                  letterSpacing: '0.12em',
+                  marginTop: '16%',
+                }}
+              >
                 {node.text}
               </span>
             </div>
 
             {node.position === 'bottom' && (
-              <h2 className="text-white text-3xl font-kalam mt-2 group-hover:translate-y-1 transition-transform tracking-wide" style={{ textShadow: '2px 2px 0px rgba(0,0,0,0.8)' }}>
+              <h2
+                className="text-white font-bangers tracking-widest mt-1 group-hover:translate-y-1 transition-transform"
+                style={{
+                  fontSize: '3rem',
+                  fontStyle: 'italic',
+                  fontWeight: 900,
+                  textShadow: '2px 2px 0 #000, -1px -1px 0 #000',
+                  letterSpacing: '0.08em',
+                }}
+              >
                 {node.date}
               </h2>
             )}
@@ -193,15 +188,9 @@ export default function SchedulePage() {
       </div>
       
       {/* Footer Cityscape */}
-      <div className="absolute bottom-0 left-0 w-full flex items-end z-0 pointer-events-none">
-        <img 
-          src="/skyline1.png" alt="Skyline Left" 
-          className="w-1/2 h-[28vh] block object-cover object-bottom opacity-90 contrast-50 brightness-[2]" 
-        />
-        <img 
-          src="/skyline2.png" alt="Skyline Right" 
-          className="w-1/2 h-[28vh] block object-cover object-bottom opacity-90 contrast-50 brightness-[2]" 
-        />
+      <div className="absolute bottom-0 left-0 w-full flex items-end z-0 pointer-events-none h-48 lg:h-64">
+        <img src="/skyline1.png" alt="Skyline Left" className="w-1/2 h-full object-cover object-bottom opacity-90 contrast-50 brightness-[2]" />
+        <img src="/skyline2.png" alt="Skyline Right" className="w-1/2 h-full object-cover object-bottom opacity-90 contrast-50 brightness-[2]" />
       </div>
     </div>
   );
