@@ -9,11 +9,11 @@ import { motion } from 'framer-motion';
 
 export default function SchedulePage() {
   const nodes = [
-    { id: 1, date: "APRIL 11", text: "REGISTRATION BEGINS", x: 20, y: 32, position: 'top' },
-    { id: 2, date: "APRIL 11", text: "REGISTRATION ENDS", x: 35, y: 55, position: 'bottom' },
-    { id: 3, date: "APRIL 11", text: "EVENT BROCHURE", x: 50, y: 32, position: 'top' },
-    { id: 4, date: "APRIL 12", text: "VIHAAN STARTS", x: 65, y: 55, position: 'bottom' },
-    { id: 5, date: "APRIL 12", text: "VIHAAN ENDS", x: 80, y: 32, position: 'top' },
+    { id: 1, date: "APRIL 11", text: "REGISTRATION BEGINS", x: 20, y: 38, position: 'top' },
+    { id: 2, date: "APRIL 11", text: "REGISTRATION ENDS", x: 35, y: 62, position: 'bottom' },
+    { id: 3, date: "APRIL 11", text: "EVENT BROCHURE", x: 50, y: 38, position: 'top' },
+    { id: 4, date: "APRIL 12", text: "VIHAAN STARTS", x: 65, y: 62, position: 'bottom' },
+    { id: 5, date: "APRIL 12", text: "VIHAAN ENDS", x: 80, y: 38, position: 'top' },
   ];
 
   return (
@@ -138,7 +138,7 @@ export default function SchedulePage() {
             )}
 
             {/* Batman logo node */}
-            <div className="relative w-full flex items-center justify-center" style={{ aspectRatio: '1.35 / 1' }}>
+            <div className="relative w-full flex items-center justify-center" style={{ aspectRatio: '3 / 1' }}>
               {/* Grey bat with blue wing-edge glow */}
               <div className="absolute inset-0 w-full h-full">
                 <img
@@ -162,7 +162,6 @@ export default function SchedulePage() {
                   fontStyle: 'italic',
                   textShadow: '1px 1px 3px #000, 0 0 8px #000',
                   letterSpacing: '0.12em',
-                  marginTop: '16%',
                 }}
               >
                 {node.text}
