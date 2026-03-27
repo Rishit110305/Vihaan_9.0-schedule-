@@ -31,8 +31,8 @@ export default function SchedulePage() {
       
       {/* Top Left Spider Logo - Fixed at viewport edge */}
       <div 
-        className="fixed -top-2 left-0 z-50 pointer-events-none"
-        style={{ width: '120px', height: '240px', mixBlendMode: 'screen', opacity: 0.5 }}
+        className="fixed -top-4 left-0 z-50 pointer-events-none"
+        style={{ width: '180px', height: '360px', mixBlendMode: 'screen', opacity: 0.5 }}
       >
         <img 
           src="/spider-new.png" 
