@@ -188,9 +188,9 @@ export default function SchedulePage() {
       </div>
       
       {/* Footer Cityscape */}
-      <div className="absolute bottom-0 left-0 w-full flex items-end z-0 pointer-events-none h-48 lg:h-64">
-        <img src="/skyline1.png" alt="Skyline Left" className="w-1/2 h-full object-cover object-bottom opacity-90 contrast-50 brightness-[2]" />
-        <img src="/skyline2.png" alt="Skyline Right" className="w-1/2 h-full object-cover object-bottom opacity-90 contrast-50 brightness-[2]" />
+      <div className="absolute bottom-0 left-0 w-full flex items-end z-0 pointer-events-none h-48 lg:h-72">
+        <img src="/skyline1.png" alt="Skyline Left" className="w-1/2 h-full object-fill opacity-90 contrast-50 brightness-[2]" />
+        <img src="/skyline2.png" alt="Skyline Right" className="w-1/2 h-full object-fill opacity-90 contrast-50 brightness-[2]" />
       </div>
     </div>
   );
