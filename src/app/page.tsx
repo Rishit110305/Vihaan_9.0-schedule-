@@ -124,7 +124,7 @@ export default function SchedulePage() {
           >
             {node.position === 'top' && (
               <h2
-                className="text-white font-bangers tracking-widest mb-1 group-hover:-translate-y-1 transition-transform"
+                className="text-white font-bangers tracking-widest -mb-4 lg:-mb-5 relative z-0 group-hover:-translate-y-1 transition-transform"
                 style={{
                   fontSize: '3rem',
                   fontStyle: 'italic',
@@ -138,7 +138,7 @@ export default function SchedulePage() {
             )}
 
             {/* Batman logo node */}
-            <div className="relative w-full flex items-center justify-center" style={{ aspectRatio: '3 / 1' }}>
+            <div className="relative w-full flex items-center justify-center z-10" style={{ aspectRatio: '3 / 1' }}>
               {/* Grey bat with blue wing-edge glow */}
               <div className="absolute inset-0 w-full h-full">
                 <img
@@ -171,7 +171,7 @@ export default function SchedulePage() {
 
             {node.position === 'bottom' && (
               <h2
-                className="text-white font-bangers tracking-widest mt-1 group-hover:translate-y-1 transition-transform"
+                className="text-white font-bangers tracking-widest -mt-4 lg:-mt-5 relative z-0 group-hover:translate-y-1 transition-transform"
                 style={{
                   fontSize: '3rem',
                   fontStyle: 'italic',
