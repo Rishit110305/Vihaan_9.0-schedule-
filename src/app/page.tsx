@@ -119,7 +119,7 @@ export default function SchedulePage() {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: i * 0.3 + 0.5, type: 'spring' }}
-            className="absolute z-20 flex flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2 w-72 lg:w-[380px] group cursor-pointer"
+            className="absolute z-20 flex flex-col items-center justify-center transform -translate-x-1/2 -translate-y-1/2 w-[320px] lg:w-[460px] group cursor-pointer"
             style={{ left: `${node.x}%`, top: `${node.y}%` }}
           >
             {node.position === 'top' && (
@@ -156,9 +156,9 @@ export default function SchedulePage() {
               </div>
               {/* Event label inside bat */}
               <span
-                className="relative z-10 text-white font-kalam uppercase text-center px-4 w-3/4 leading-[1.1]"
+                className="relative z-10 text-white font-kalam uppercase text-center px-4 w-[85%] leading-[1.1]"
                 style={{
-                  fontSize: '0.75rem',
+                  fontSize: '0.8rem',
                   fontStyle: 'italic',
                   textShadow: '1px 1px 3px #000, 0 0 8px #000',
                   letterSpacing: '0.1em',
