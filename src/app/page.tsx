@@ -74,9 +74,11 @@ export default function SchedulePage() {
               {nodes.map((node, i) => {
                   if (i === nodes.length - 1) return null;
                   const next = nodes[i + 1];
+                  const startY = node.position === 'top' ? node.y + 4 : node.y - 4;
+                  const endY = next.position === 'top' ? next.y + 4 : next.y - 4;
                   const midX = (node.x + next.x) / 2;
-                  const midY = (node.y + next.y) / 2;
-                  const angle = Math.atan2(next.y - node.y, next.x - node.x) * (180 / Math.PI) + 90;
+                  const midY = (startY + endY) / 2;
+                  const angle = Math.atan2(endY - startY, next.x - node.x) * (180 / Math.PI) + 90;
                   
                   return (
                     <g key={`connection-web-${i}`}>
@@ -84,7 +86,7 @@ export default function SchedulePage() {
                         initial={{ pathLength: 0, opacity: 0 }}
                         animate={{ pathLength: 1, opacity: 0.4 }}
                         transition={{ duration: 1, delay: i * 0.3 + 0.5 }}
-                        d={`M ${node.x} ${node.y + 4} L ${next.x} ${next.y + (next.y > node.y ? -4 : 4)}`}
+                        d={`M ${node.x} ${startY} L ${next.x} ${endY}`}
                         stroke="white"
                         strokeWidth="0.2"
                         strokeDasharray="1 1"
