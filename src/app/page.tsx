@@ -76,6 +76,7 @@ export default function SchedulePage() {
                   const next = nodes[i + 1];
                   const midX = (node.x + next.x) / 2;
                   const midY = (node.y + next.y) / 2;
+                  const angle = Math.atan2(next.y - node.y, next.x - node.x) * (180 / Math.PI) + 90;
                   
                   return (
                     <g key={`connection-web-${i}`}>
@@ -90,20 +91,20 @@ export default function SchedulePage() {
                         fill="none"
                         vectorEffect="non-scaling-stroke"
                       />
-                       {/* Place a spider somewhere along the line */}
+                       {/* Place a spider perfectly aligned along the line */}
                        <motion.g 
                          initial={{ opacity: 0 }} 
-                         animate={{ opacity: 1 }} 
+                         animate={{ opacity: 0.7 }} 
                          transition={{ delay: i * 0.3 + 1.2 }}
-                         style={{ transform: `translate(${midX}%, ${midY}%)`, transformOrigin: 'center' }}
                        >
                          <image
-                           href="/spider2.png"
-                           x="-1.5"
-                           y="-1.5"
-                           width="3"
-                           height="3"
-                           style={{ filter: 'brightness(2) contrast(1.2)', opacity: 0.6, mixBlendMode: 'screen' }}
+                           href="/spider-new.png"
+                           x={midX - 2}
+                           y={midY - 4}
+                           width="4"
+                           height="8"
+                           transform={`rotate(${angle} ${midX} ${midY})`}
+                           style={{ mixBlendMode: 'screen' }}
                          />
                        </motion.g>
                      </g>
