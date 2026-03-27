@@ -98,13 +98,13 @@ export default function SchedulePage() {
                          transition={{ delay: i * 0.3 + 1.2 }}
                        >
                          <image
-                           href="/spider1.png"
+                           href="/spider-new-tilted.png"
                            x={midX - 1.75}
                            y={midY - 1.75}
                            width="3.5"
                            height="3.5"
                            transform={`rotate(${angle} ${midX} ${midY})`}
-                           style={{ mixBlendMode: 'screen' }}
+                           style={{ mixBlendMode: 'screen', opacity: 0.9 }}
                          />
                        </motion.g>
                      </g>
